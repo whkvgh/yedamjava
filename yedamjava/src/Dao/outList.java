@@ -29,10 +29,11 @@ public class outList {
 	    }
 	}
 
-	public void delete() {
+	public void ItemOut() {
 		Scanner sc  = new Scanner(System.in);
 		ItemListBean item = new ItemListBean();
 		
+		item.
 		System.out.println("=================");
 		System.out.println("출고할 품목을 선택하세요");
 		String n = sc.nextLine();
