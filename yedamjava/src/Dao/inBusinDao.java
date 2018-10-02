@@ -4,16 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Scanner;
+import java.sql.SQLException;
 
-import Bean.ItemListBean;
-
-public class outList {
+public class inBusinDao {
+	
 	static Connection conn = null;
 	static PreparedStatement pstmt;
 	static ResultSet rs;
 	
-	public void db_con() {
+	public inBusinDao() {
 		try {
 			
 			String user ="item";
@@ -28,16 +27,31 @@ public class outList {
 	         e.printStackTrace();
 	    }
 	}
+	
+	public ResultSet busin_name() {
+		
+		String sql = "select * from in_busin";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 
-	public void ItemOut() {
-		Scanner sc  = new Scanner(System.in);
-		ItemListBean item = new ItemListBean();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
-		item.
-		System.out.println("=================");
-		System.out.println("출고할 품목을 선택하세요");
-		String n = sc.nextLine();
-		sc.close();
-		
+		return rs;
 	}
+	
+	/*public void insert_in() {
+		
+		try {
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}*/
+	
+	
 }
