@@ -12,9 +12,10 @@ public class inBusinModel {
 	public void inBusin_list() {
 		inBusinDao dao = new inBusinDao();
 		InBusinBean bean = new InBusinBean();
-		System.out.println("====================구입할 업체====================");
 		
+		System.out.println("====================구입할 업체====================");
 		System.out.println("업체코드 \t\t 업체명\t 주소\t\t\t 연락처\t\t 대표자명");
+		
 		ResultSet rs = dao.busin_name();
 		
 		try {
@@ -24,7 +25,6 @@ public class inBusinModel {
 				bean.setBusin_addr(rs.getString(3));
 				bean.setBusin_num(rs.getString(4));
 				bean.setCeo(rs.getString(5));
-				
 				System.out.println(bean.getBusin_code() + " \t" + bean.getBusin_name() + " \t" + bean.getBusin_addr()
 									+ " \t" + bean.getBusin_num() + " \t" + bean.getCeo());
 			}

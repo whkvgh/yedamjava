@@ -8,6 +8,7 @@ public class ItemListBean {
 	private int unit;
 	private String store_code;
 	private int price;
+	
 	public String getI_group() {
 		return i_group;
 	}
