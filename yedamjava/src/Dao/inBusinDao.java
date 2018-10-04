@@ -1,5 +1,6 @@
 package Dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ public class inBusinDao {
 	static Connection conn = null;
 	static PreparedStatement pstmt;
 	static ResultSet rs;
+	static CallableStatement pst;
 	
 	public inBusinDao() {
 		try {
@@ -43,15 +45,42 @@ public class inBusinDao {
 		return rs;
 	}
 	
-	/*public void insert_in() {
+	public void in_list(String name, int count, String busin_name, int cnt, String sign) {
 		
 		try {
+			pst = conn.prepareCall("{call in_proc(?,?,?,?,?,?)}");
+			pst.setInt(1, cnt);
+			pst.setString(2, name);
+			pst.setInt(3, count);
+			pst.setString(4, busin_name);
+			pst.setString(5, sign);
+			pst.registerOutParameter(6, java.sql.Types.INTEGER);
+			
+			pst.execute();
+			int result = pst.getInt(6);
+			
+			/*if(result > 0)
+				System.out.println("성공");
+			else
+				System.out.println("입력 실패 ");
+			*/
 			
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-	}*/
+	}
 	
+	public void inout_list() {
+		
+		try {
+			pst = conn.prepareCall("{call in_proc(?,?,?,?,?,?)}");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+
 	
 }
