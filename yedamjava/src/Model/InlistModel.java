@@ -28,7 +28,7 @@ public class InlistModel {
 			
 			dao.in_list(name, count, busin_name, cnt, sign);
 			
-			if(!ck.equals("Y") ) {
+			if(!ck.equalsIgnoreCase("Y") ) {
 				//scan.close();	
 				System.out.println(ck);
 				break;
