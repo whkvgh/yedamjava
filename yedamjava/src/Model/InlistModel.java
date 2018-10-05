@@ -23,8 +23,6 @@ public class InlistModel {
 			int count = scan.nextInt();
 			scan.nextLine();
 			
-			//System.out.println(count);
-			
 			System.out.print("더 구입하실껀가요? (Y/N) : ");
 			String ck = scan.nextLine();
 			

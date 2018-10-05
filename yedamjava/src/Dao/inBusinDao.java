@@ -47,8 +47,6 @@ public class inBusinDao {
 	
 	public void in_list(String name, int count, String busin_name, int cnt, String sign) {
 		
-		System.out.println(name + "\t" + count+ "\t" +busin_name+ "\t" +cnt+ "\t" +sign);
-		
 		try {
 			
 			pst = conn.prepareCall("{call in_proc(?,?,?,?,?,?)}");
@@ -77,8 +75,6 @@ public class inBusinDao {
 	
 	public void good_list(String name, int count, String busin_name) {
 		
-		System.out.println(name + "\t" + count+ "\t" + busin_name);
-		
 		try {
 			pst = conn.prepareCall("{call in_goodlist_proc(?, ?, ?, ?)}");
 			pst.setString(1, name);
@@ -89,7 +85,7 @@ public class inBusinDao {
 			pst.execute();
 			
 			int result = pst.getInt(4);
-			System.out.println("count : " + result);
+			
 			if(result > 0) {
 				System.out.println("성공");
 				//in_inout_list(name, count);
@@ -104,8 +100,7 @@ public class inBusinDao {
 	
 	public void in_inout_list(String name, int count) {
 		
-		System.out.println(name + "\t" + count);
-		
+
 		try {
 			pst = conn.prepareCall("{call in_inoutlist_proc(?, ?, ?)}");
 			pst.setString(1, name);
