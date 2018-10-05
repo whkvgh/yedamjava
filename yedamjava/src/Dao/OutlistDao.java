@@ -1,5 +1,6 @@
 package Dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,6 +11,7 @@ public class OutlistDao {
 	static Connection conn = null;
 	static PreparedStatement pstmt;
 	static ResultSet rs;
+	static CallableStatement pst;
 
 	public OutlistDao() {
 		try {
@@ -27,8 +29,9 @@ public class OutlistDao {
 		}
 	}
 
-	public ResultSet OutItem() {
-		String sql = "select * from item_list";
+	public ResultSet out_bname() {
+		String sql = "select * from out_busin";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -38,4 +41,18 @@ public class OutlistDao {
 		return rs;
 	}
 
+	public void outgoods(String sub_group, String i_name, int i_count, String store_code) {
+		try {
+			pst = conn.prepareCall("{call out_pro (?,?,?,?)}");
+			pst.setString(1, sub_group);
+			pst.setString(2, i_name);
+			pst.setInt(3, i_count);
+			pst.setString(4, store_code);
+			
+			pst.execute();
+	} catch(SQLException e) {
+		e.printStackTrace();
+	}
+		
+}
 }
