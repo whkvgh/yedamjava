@@ -24,7 +24,6 @@ public class inBusinDao {
 		    Class.forName("oracle.jdbc.driver.OracleDriver");        
 		    conn = DriverManager.getConnection(url, user, pw);
 		         
-		    System.out.println("Database에 연결되었습니다.\n");
 		}catch (Exception e) {
 	         e.printStackTrace();
 	    }
@@ -62,8 +61,7 @@ public class inBusinDao {
 			int result = pst.getInt(6);
 			
 			if(result > 0) {
-				System.out.println("성공");
-				good_list(name, count, busin_name);
+				good_list(name, count);
 			}else
 				System.out.println("입력 실패 ");
 			
@@ -73,22 +71,21 @@ public class inBusinDao {
 		
 	}
 	
-	public void good_list(String name, int count, String busin_name) {
+	public void good_list(String name, int count) {
 		
 		try {
-			pst = conn.prepareCall("{call in_goodlist_proc(?, ?, ?, ?)}");
+			pst = conn.prepareCall("{call in_goodlist_proc(?, ?, ?)}");
 			pst.setString(1, name);
 			pst.setInt(2, count);
-			pst.setString(3, busin_name);
-			pst.registerOutParameter(4, java.sql.Types.INTEGER);
+			pst.registerOutParameter(3, java.sql.Types.INTEGER);
 			
 			pst.execute();
 			
-			int result = pst.getInt(4);
+			int result = pst.getInt(3);
+			System.out.println(result);
 			
 			if(result > 0) {
-				System.out.println("성공");
-				//in_inout_list(name, count);
+				in_inout_list(name, count);
 			}else
 				System.out.println("입력 실패 ");
 			
@@ -112,6 +109,8 @@ public class inBusinDao {
 
 			int result = pst.getInt(3);
 
+			System.out.println(result);
+			
 			if(result > 0)
 				System.out.println("성공");
 			else
