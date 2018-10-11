@@ -13,7 +13,7 @@ public class OutlistModel {
 	Scanner sc = new Scanner(System.in);
 	ItemListBean bean = new ItemListBean();
 	
-	public ItemListBean getOutItem() {
+	/*public ItemListBean getOutItem() {
 		try{ 
 			System.out.println("====================");
 			System.out.println("판매할 업체명을 입력하세요");
@@ -27,5 +27,6 @@ public class OutlistModel {
 		
 	} catch (SQLException e) {
 		e.printStackTrace();
-	}
+	}*/
+}
 
