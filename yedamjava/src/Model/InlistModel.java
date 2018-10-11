@@ -21,16 +21,15 @@ public class InlistModel {
 			
 			System.out.print("수량 : ");
 			int count = scan.nextInt();
+			scan.nextLine();
 			
 			System.out.print("더 구입하실껀가요? (Y/N) : ");
-			scan.nextLine();
 			String ck = scan.nextLine();
 			
 			dao.in_list(name, count, busin_name, cnt, sign);
 			
-			if(!ck.equals("Y") ) {
-				//scan.close();	
-				System.out.println(ck);
+			if(!ck.equalsIgnoreCase("Y") ) {
+				scan.close();	
 				break;
 			}else {
 				sign = "M";

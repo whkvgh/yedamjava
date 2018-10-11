@@ -2,6 +2,7 @@ package Model;
 
 import java.sql.SQLException;
 
+<<<<<<< HEAD
 import Bean.OutbusinBean;
 import Dao.OutlistDao;
 import Dao.inBusinDao;
