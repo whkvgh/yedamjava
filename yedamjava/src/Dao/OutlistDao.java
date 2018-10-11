@@ -40,6 +40,10 @@ public class OutlistDao {
 		}
 		return rs;
 	}
+	
+	public void outlist() {
+		String sql = "insert into out_list value(?,?,?)";
+	}
 
 	public void outgoods(String sub_group, String i_name, int i_count, String store_code) {
 		try {
@@ -54,5 +58,6 @@ public class OutlistDao {
 		e.printStackTrace();
 	}
 		
-}
+	}
+	
 }
