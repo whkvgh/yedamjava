@@ -15,6 +15,8 @@ public class inBusinDao {
 	static CallableStatement pst;
 	
 	public inBusinDao() {
+		long start = System.currentTimeMillis();
+		
 		try {
 			
 			String user ="item";
@@ -27,6 +29,9 @@ public class inBusinDao {
 		}catch (Exception e) {
 	         e.printStackTrace();
 	    }
+		long end = System.currentTimeMillis();
+
+		System.out.println( "실행 시간 : " + ( end - start )/1000.0 );
 	}
 	
 	public ResultSet busin_name() {

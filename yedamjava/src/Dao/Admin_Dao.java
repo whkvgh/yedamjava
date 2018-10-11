@@ -13,19 +13,19 @@ public class Admin_Dao {
 	static ResultSet rs;
 	
 	public Admin_Dao() {
+
 		try {
-			
 			String user ="item";
 			String pw = "item";
 			String url = "jdbc:oracle:thin:@192.168.0.56:1521:xe";
 
 		    Class.forName("oracle.jdbc.driver.OracleDriver");        
 		    conn = DriverManager.getConnection(url, user, pw);
-		         
-		    System.out.println("Database에 연결되었습니다.\n");
+		       
 		}catch (Exception e) {
 	         e.printStackTrace();
 	    }
+
 	}
 	
 	public ResultSet in_busin_show() {		// 구매업체
