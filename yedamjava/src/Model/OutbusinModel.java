@@ -26,7 +26,8 @@ public class OutbusinModel {
 				bean.setBusin_addr(rs.getString(3));
 				bean.setBusin_num(rs.getString(4));
 				bean.setCeo(rs.getString(5));
-				System.out.println(busin_code + "\t" + busin_name + "\t" + busin_addr +"\t" + busin_num + "\t" + ceo );
+				System.out.println(bean.getBusin_code() + "\t" + bean.getBusin_name() + "\t" 
+						+ bean.getBusin_addr() +"\t" + bean.getBusin_num() + "\t" + bean.getCeo());
 			
 			} else System.out.println("선택한 업체가 없습니다.");
 		} catch (SQLException e) {

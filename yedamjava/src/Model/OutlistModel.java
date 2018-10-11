@@ -9,16 +9,18 @@ import Bean.OutbusinBean;
 import Dao.OutlistDao;
 
 public class OutlistModel {
-	OutbusinBean bean = new OutbusinBean();
+	OutlistDao dao =new OutlistDao();
 	Scanner sc = new Scanner(System.in);
+	ItemListBean bean = new ItemListBean();
 	
-	
-	public void OutItem() {
-		System.out.println("====================");
-		System.out.println("판매할 업체명을 입력하세요");
-		bean.setBusin_name(sc.next());
-		System.out.println("판매할 제품을 입력하세요");
-		System.out.println("판매할 수량을 입력하세요");
+	public ItemListBean getOutItem() {
+		try{ 
+			System.out.println("====================");
+			System.out.println("판매할 업체명을 입력하세요");
+			
+		}
+		
+		
 	}
 	
 		
