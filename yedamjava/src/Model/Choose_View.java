@@ -28,6 +28,7 @@ public class Choose_View {
 			view.item_list();
 			break;
 		case 5:
+			view.inout_list();
 			break;	
 		case 6:
 			break;

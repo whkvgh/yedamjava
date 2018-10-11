@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 
 import Bean.InBusinBean;
+import Bean.InOutBean;
 import Bean.ItemListBean;
 import Bean.OutbusinBean;
 import Bean.StoreListBean;
@@ -111,6 +112,29 @@ public class Item_View {
 	}
 	
 	public void inout_list() {
+		
+		InOutBean bean;
+		rs = dao.item_list_show();
+		
+		System.out.println("상품코드 \t 상품명\t 입고수량 \t 출고수량 \t 입고일자\t 창고\t 비고");
+		
+		try {
+			while(rs.next()) {
+				bean = new InOutBean();
+				bean.setSub_group(rs.getString(1));
+				bean.setI_name(rs.getString(2));
+				bean.setIn_count(rs.getInt(3));
+				bean.setOut_count(rs.getInt(4));
+				bean.setDate_list(rs.getString(5));
+				bean.setStore_code(rs.getString(6));
+				bean.setBigo(rs.getString(7));
+				
+				System.out.println(bean.getSub_group() +"\t " + bean.getI_name() +"\t " + bean.getIn_count() +"\t " + bean.getOut_count()
+									+ "\t " + bean.getDate_list() + "\t " + bean.getStore_code() +"\t " + bean.getBigo());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	

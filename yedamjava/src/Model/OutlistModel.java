@@ -12,7 +12,7 @@ public class OutlistModel {
 	OutlistDao dao =new OutlistDao();
 	Scanner sc = new Scanner(System.in);
 		
-	public void insertOutlist() {
+	/*public void insertOutlist() {
 		
 		try{ 
 			System.out.println("====================");
@@ -32,7 +32,7 @@ public class OutlistModel {
         e.printStackTrace();
 	}
 		
-		
+		*/
 	
 }
 
