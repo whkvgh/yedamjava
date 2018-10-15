@@ -1,21 +1,36 @@
 package Bean;
 
 public class OutlistBean {
-	private String sub_num;
+	private String sell_num;
 	private int sub_infor;
 	private String sub_group;
 	private String i_name;
 	private int i_count;
 	private int price;
 	private int money;
-	private int in_date;
+	private int out_date;
 	private String busin_code;
-	public String getSub_num() {
-		return sub_num;
+	private String store_code;
+	
+	public int getOut_date() {
+		return out_date;
 	}
-	public void setSub_num(String sub_num) {
-		this.sub_num = sub_num;
+	public void setOut_date(int out_date) {
+		this.out_date = out_date;
 	}
+	public String getSell_num() {
+		return sell_num;
+	}
+	public void setSell_num(String sell_num) {
+		this.sell_num = sell_num;
+	}
+	public String getStore_code() {
+		return store_code;
+	}
+	public void setStore_code(String store_code) {
+		this.store_code = store_code;
+	}
+	
 	public int getSub_infor() {
 		return sub_infor;
 	}
@@ -52,12 +67,7 @@ public class OutlistBean {
 	public void setMoney(int money) {
 		this.money = money;
 	}
-	public int getIn_date() {
-		return in_date;
-	}
-	public void setIn_date(int in_date) {
-		this.in_date = in_date;
-	}
+
 	public String getBusin_code() {
 		return busin_code;
 	}

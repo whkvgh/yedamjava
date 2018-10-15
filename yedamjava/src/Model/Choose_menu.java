@@ -25,7 +25,7 @@ public class Choose_menu {
 			break;
 		case 3:
 			TEST test = new TEST();
-			test.Sest();
+			test.Jtest();
 			break;
 		default:
 			break;

@@ -7,12 +7,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import Bean.OutlistBean;
+
 public class OutlistDao {
 	static Connection conn = null;
 	static PreparedStatement pstmt;
 	static ResultSet rs;
 	static CallableStatement pst;
-
+	static OutlistBean bean;
+	
 	public OutlistDao() {
 		try {
 
@@ -28,7 +31,31 @@ public class OutlistDao {
 			e.printStackTrace();
 		}
 	}
-
+	public void InsertOutlist() {	//입력
+	 String sql = "insert into out_list(sub_group, i_name, i_count, price, money, busin_code, store_code) " + 
+			"  values(?,?,?,?,?,?,?)";
+	 
+	 try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bean.getSell_num());
+			pstmt.setInt(2, bean.getSub_infor());
+			pstmt.setString(3, bean.getSub_group());
+			pstmt.setString(4, bean.getI_name());
+			pstmt.setInt(6, bean.getI_count());
+			pstmt.setInt(7, bean.getPrice());
+			pstmt.setInt(8, bean.getMoney());
+			//pstmt.setInt(9, bean.getOut_date());
+			pstmt.setString(9, bean.getBusin_code());
+			pstmt.setString(10, bean.getStore_code());
+			
+			rs = pstmt.executeQuery();
+			
+	 } catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public ResultSet out_bname() {
 		String sql = "select * from out_busin";
 		
@@ -41,10 +68,21 @@ public class OutlistDao {
 		return rs;
 	}
 	
-	public void outlist() {
-		String sql = "insert into out_list value(?,?,?)";
+	public void  deleteOutlist() { //삭제
+		String sql = " delete from out_list where trunc(out_date) = to_date('?', 'yy/mm/dd') and sell_num= ? and  sub_infor=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			// sysdate 우째 삭제함????????
+			pstmt.setString(2, bean.getSell_num());
+			pstmt.setInt(3, bean.getSub_infor());
+			rs = pstmt.executeQuery();
+			
+			}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return;
 	}
-
 	public void outgoods(String sub_group, String i_name, int i_count, String store_code) {
 		try {
 			pst = conn.prepareCall("{call out_pro (?,?,?,?)}");
