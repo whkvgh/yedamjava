@@ -31,11 +31,13 @@ public class Choose_View {
 			view.inout_list();
 			break;	
 		case 6:
+			view.good_list();
 			break;
 		default:
 			break;
 		}
 		scan.close();
-		
 	}
+	
+	
 }

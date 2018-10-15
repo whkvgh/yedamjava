@@ -34,21 +34,20 @@ public class inBusinDao {
 		System.out.println( "실행 시간 : " + ( end - start )/1000.0 );
 	}
 	
-	public ResultSet busin_name() {
+	public ResultSet in_list_show() {
 		
-		String sql = "select * from in_busin";
+		String sql = "select * from in_list";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
 			rs = pstmt.executeQuery();
 
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return rs;
 	}
-	
 	public void in_list(String name, int count, String busin_name, int cnt, String sign) {
 		
 		try {

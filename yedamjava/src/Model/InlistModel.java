@@ -7,6 +7,7 @@ import Dao.inBusinDao;
 public class InlistModel {
 	
 	public void input_list(String busin_name) {
+		
 		inBusinDao dao = new inBusinDao();
 		Scanner scan = new Scanner(System.in);
 		System.out.println("구입 할 상품명을 입력해주세요.");
