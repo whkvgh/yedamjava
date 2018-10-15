@@ -3,7 +3,7 @@ package View;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+import Bean.GoodListBean;
 import Bean.InBusinBean;
 import Bean.InOutBean;
 import Bean.ItemListBean;
@@ -114,7 +114,7 @@ public class Item_View {
 	public void inout_list() {
 		
 		InOutBean bean;
-		rs = dao.item_list_show();
+		rs = dao.inout_list_show();
 		
 		System.out.println("상품코드 \t 상품명\t 입고수량 \t 출고수량 \t 입고일자\t 창고\t 비고");
 		
@@ -137,5 +137,30 @@ public class Item_View {
 		}
 		
 	}
+	
+	public void good_list() {
+		GoodListBean bean;
+		ResultSet rs = dao.good_list_show();
+		
+		System.out.println("상품코드" + "\t " + "상품명" + "\t " + "단가" + "\t " + "창고코드" + "\t " + "수량");
+		
+		try {
+			while(rs.next()) {
+				bean = new GoodListBean();
+				bean.setSub_group(rs.getString(1));
+				bean.setI_name(rs.getString(2));
+				bean.setPrice(rs.getInt(3));
+				bean.setStore_code(rs.getString(4));
+				bean.setI_count(rs.getInt(5));
+				
+				System.out.println(bean.getSub_group() +"\t " + bean.getI_name() +"\t " + bean.getPrice() +"\t " 
+									+ bean.getStore_code() + "\t " + bean.getI_count());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 }

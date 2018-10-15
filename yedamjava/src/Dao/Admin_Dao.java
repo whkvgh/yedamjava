@@ -90,8 +90,8 @@ public class Admin_Dao {
 	
 	public ResultSet inout_list_show() {	//입출고내역
 		
-		String sql = "select sub_group, i_name, nvl(in_count,0), nvl(out_count,0), date_list, store_code, bigo\r\n" + 
-				"from inout_list;";
+		String sql = "select sub_group, i_name, nvl(in_count,0), nvl(out_count,0), date_list, store_code, bigo " + 
+				" from inout_list";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

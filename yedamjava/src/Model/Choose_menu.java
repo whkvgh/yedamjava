@@ -20,8 +20,8 @@ public class Choose_menu {
 			view.show();
 			break;
 		case 2:
-			inBusinModel in = new inBusinModel();
-			in.insert_busin();
+			In_list_choose list_chooice = new In_list_choose();
+			list_chooice.in_choose();
 			break;
 		case 3:
 			TEST test = new TEST();
