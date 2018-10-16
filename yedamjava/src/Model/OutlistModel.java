@@ -16,7 +16,8 @@ public class OutlistModel {
 		int menu = 0;
 
 		while (true) {
-			System.out.println("메뉴를 선택하세요  1.입력  2.수정  3.삭제  4.조회  5.종료");
+			System.out.println("============출고화면==============");
+			System.out.println("출과메뉴에서 관리할 메뉴를 선택하세요  1.입력  2.수정  3.삭제  4.조회  5.종료");
 		
 		menu = sc.nextInt();
 		sc.nextInt();
