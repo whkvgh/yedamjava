@@ -8,14 +8,16 @@ public class OutlistBean {
 	private int i_count;
 	private int price;
 	private int money;
-	private int out_date;
+	private String out_date;
 	private String busin_code;
 	private String store_code;
 	
-	public int getOut_date() {
+	
+	
+	public String getOut_date() {
 		return out_date;
 	}
-	public void setOut_date(int out_date) {
+	public void setOut_date(String out_date) {
 		this.out_date = out_date;
 	}
 	public String getSell_num() {

@@ -31,9 +31,9 @@ public class OutlistDao {
 			e.printStackTrace();
 		}
 	}
-	public void InsertOutlist() {	//입력
-	 String sql = "insert into out_list(sub_group, i_name, i_count, price, money, busin_code, store_code) " + 
-			"  values(?,?,?,?,?,?,?)";
+	public void InsertOutlist(OutlistBean bean) {	//입력
+	 String sql = "insert into out_list(sub_group, i_name, i_count, price, money, busin_code, store_code, out_date) " + 
+			"  values(?,?,?,?,?,?,?, sysdate)";
 	 
 	 try {
 			pstmt = conn.prepareStatement(sql);
@@ -44,7 +44,6 @@ public class OutlistDao {
 			pstmt.setInt(6, bean.getI_count());
 			pstmt.setInt(7, bean.getPrice());
 			pstmt.setInt(8, bean.getMoney());
-			//pstmt.setInt(9, bean.getOut_date());
 			pstmt.setString(9, bean.getBusin_code());
 			pstmt.setString(10, bean.getStore_code());
 			
@@ -56,16 +55,9 @@ public class OutlistDao {
 		
 	}
 	
-	public ResultSet out_bname() {
-		String sql = "select * from out_busin";
+	public void editOutlist() {	//수정
+		//String sql = "update Outlist set sub_group =?, i_name = ?, i_count = ?, pricdr = ?, money=?, out_date =?, busin_code=?, store_code=?"
 		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return rs;
 	}
 	
 	public void  deleteOutlist() { //삭제
@@ -83,6 +75,22 @@ public class OutlistDao {
 		}
 		return;
 	}
+	
+	public ResultSet getOutlist() {	//조회
+		String sql = "select * from out_list";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+
 	public void outgoods(String sub_group, String i_name, int i_count, String store_code) {
 		try {
 			pst = conn.prepareCall("{call out_pro (?,?,?,?)}");
