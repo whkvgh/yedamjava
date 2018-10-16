@@ -76,4 +76,12 @@ public class OutlistBean {
 	public void setBusin_code(String busin_code) {
 		this.busin_code = busin_code;
 	}
+	@Override
+	public String toString() {
+		return "OutlistBean [sell_num=" + sell_num + ", sub_infor=" + sub_infor + ", sub_group=" + sub_group
+				+ ", i_name=" + i_name + ", i_count=" + i_count + ", price=" + price + ", money=" + money
+				+ ", out_date=" + out_date + ", busin_code=" + busin_code + ", store_code=" + store_code + "]";
+	}
+	
+	
 }

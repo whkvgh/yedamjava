@@ -10,11 +10,12 @@ import java.sql.SQLException;
 import Bean.OutlistBean;
 
 public class OutlistDao {
-	static Connection conn = null;
-	static PreparedStatement pstmt;
-	static ResultSet rs;
-	static CallableStatement pst;
-	static OutlistBean bean;
+	private Connection conn = null;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+	private CallableStatement pst;
+	private OutlistBean bean;
+	private int in;
 	
 	public OutlistDao() {
 		try {
@@ -32,22 +33,20 @@ public class OutlistDao {
 		}
 	}
 	public void InsertOutlist(OutlistBean bean) {	//입력
-	 String sql = "insert into out_list(sub_group, i_name, i_count, price, money, busin_code, store_code, out_date) " + 
-			"  values(?,?,?,?,?,?,?, sysdate)";
+	 String sql = "insert into out_list(sub_group, i_name, i_count, price, money, out_date, busin_code, store_code) " + 
+			"  values(?, ?, ?, ?, ?, sysdate, ?, ?)";
 	 
 	 try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, bean.getSell_num());
-			pstmt.setInt(2, bean.getSub_infor());
-			pstmt.setString(3, bean.getSub_group());
-			pstmt.setString(4, bean.getI_name());
-			pstmt.setInt(6, bean.getI_count());
-			pstmt.setInt(7, bean.getPrice());
-			pstmt.setInt(8, bean.getMoney());
-			pstmt.setString(9, bean.getBusin_code());
-			pstmt.setString(10, bean.getStore_code());
-			
-			rs = pstmt.executeQuery();
+		 pstmt = conn.prepareStatement(sql);
+		 pstmt.setString(1, bean.getSub_group());
+		 pstmt.setString(2, bean.getI_name());
+		 pstmt.setInt(3, bean.getI_count());
+		 pstmt.setInt(4, bean.getPrice());
+		 pstmt.setInt(5, bean.getMoney());
+		 pstmt.setString(6, bean.getBusin_code());
+		 pstmt.setString(7, bean.getStore_code());
+		 
+		 pstmt.executeUpdate();
 			
 	 } catch (SQLException e) {
 			e.printStackTrace();
@@ -56,7 +55,7 @@ public class OutlistDao {
 	}
 	
 	public void editOutlist() {	//수정
-		//String sql = "update Outlist set sub_group =?, i_name = ?, i_count = ?, pricdr = ?, money=?, out_date =?, busin_code=?, store_code=?"
+		//String sql = "update out_list set sub_group =?, i_name = ?, i_count = ?, pricdr = ?, money=?, out_date =?, busin_code=?, store_code=?"
 		
 	}
 	
@@ -65,15 +64,17 @@ public class OutlistDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			// sysdate 우째 삭제함????????
+			pstmt.setString(1, bean.getOut_date());
 			pstmt.setString(2, bean.getSell_num());
 			pstmt.setInt(3, bean.getSub_infor());
-			rs = pstmt.executeQuery();
+			int n = pstmt.executeUpdate();
+			
+			if (n == 0) System.out.println("삭제를 실패하였습니다");
+			else System.out.println("삭제 완료하였습니다.");
 			
 			}catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return;
 	}
 	
 	public ResultSet getOutlist() {	//조회
@@ -81,13 +82,13 @@ public class OutlistDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
 			rs = pstmt.executeQuery();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return rs;
+	
 	}
 	
 
