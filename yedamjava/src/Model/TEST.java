@@ -14,8 +14,5 @@ public class TEST {
 		
 	}
 
-	public void Jtest() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
