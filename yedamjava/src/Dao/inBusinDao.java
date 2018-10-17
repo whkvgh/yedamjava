@@ -15,7 +15,6 @@ public class inBusinDao {
 	static CallableStatement pst;
 	
 	public inBusinDao() {
-		long start = System.currentTimeMillis();
 		
 		try {
 			
@@ -29,9 +28,7 @@ public class inBusinDao {
 		}catch (Exception e) {
 	         e.printStackTrace();
 	    }
-		long end = System.currentTimeMillis();
-
-		System.out.println( "실행 시간 : " + ( end - start )/1000.0 );
+	
 	}
 	
 	public ResultSet in_list_show() {
@@ -48,6 +45,7 @@ public class inBusinDao {
 		}
 		return rs;
 	}
+	
 	public void in_list(String name, int count, String busin_name, int cnt, String sign) {
 		
 		try {
@@ -125,6 +123,45 @@ public class inBusinDao {
 		}
 	}
 	
+	public ResultSet inList_getNum(String date, String buy_num) {
+		
+		String sql = "select * from in_list where buy_num = ? and to_char(in_date, 'yyyymmdd') = to_date(?, 'yyyymmdd')";
 
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, buy_num);
+			pstmt.setString(2, date);
+			
+			rs = pstmt.executeQuery();
+			
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+		
+	}
+	
+	public void update_inList(String date, String buy_num, int line, int cnt) {
+		
+		
+		try {
+			pst = conn.prepareCall("{call in_list_update(?,?,?,?)}");
+			
+			pst.setString(1, buy_num);
+			pst.setInt(2, line);
+			pst.setInt(3, cnt);
+			pst.setString(4, date);
+			
+			pst.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
 }
