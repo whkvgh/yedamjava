@@ -29,8 +29,21 @@ public class OutBusinDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public ResultSet viewOutBusin() {
+		String sql = "select * from out_busin";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
 
-	public void InsertOutBusin() {
+	public void InsertOutBusin() { //입력
 		String sql = "insert into out_busin" + "values(?,?,?,?,?)";
 
 		try {
@@ -47,11 +60,11 @@ public class OutBusinDao {
 		}
 	}
 	
-	public void editOutBusin() {
+	public void editOutBusin() {	//수정
 		
 	}
 	
-	public void deleteOutlist() {
+	public void deleteOutlist() {	//삭제
 		
 	}
 }
