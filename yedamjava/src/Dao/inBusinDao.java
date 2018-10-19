@@ -107,11 +107,8 @@ public class inBusinDao {
 			pst.registerOutParameter(3, java.sql.Types.INTEGER);
 			
 			pst.execute();
-			
-
+		
 			int result = pst.getInt(3);
-
-			System.out.println(result);
 			
 			if(result > 0)
 				System.out.println("성공");
@@ -161,7 +158,24 @@ public class inBusinDao {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void delete_inList(String date, String buy_num, int line) {
 		
+		
+		try {
+			pst = conn.prepareCall("{call in_list_delete(?,?,?)}");
+			
+			pst.setString(1, buy_num);
+			pst.setInt(2, line);
+			pst.setString(3, date);
+			
+			pst.execute();
+			
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

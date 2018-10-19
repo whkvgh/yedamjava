@@ -10,7 +10,7 @@ public class Choose_View {
 		Item_View view = new Item_View();
 		Scanner scan = new Scanner(System.in);
 		System.out.println("1. 구매업체  2. 구매업체  3. 창고정보  4. 품목정보  5. 입출고  6. 재고관리");
-		
+		System.out.print("입력 :" );
 		int ck = scan.nextInt();
 		scan.nextLine();
 		
@@ -34,9 +34,10 @@ public class Choose_View {
 			view.good_list();
 			break;
 		default:
+			//scan.close();
 			break;
 		}
-		scan.close();
+		
 	}
 	
 	
