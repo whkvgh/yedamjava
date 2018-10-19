@@ -7,10 +7,11 @@ public class Choose_menu {
 	public void menu_choose() {
 		
 		Scanner scan = new Scanner(System.in);
+		
 		while(true) {
 			
 			System.out.println("관리할 화면을 선택하세요.");
-			System.out.println("1. 조회  2. 입고  3. 출고");
+			System.out.println("1. 조회  2. 입고  3. 출고  4. 종료");
 			
 			System.out.printf("입력 : ");
 			int ck = scan.nextInt();
@@ -30,9 +31,10 @@ public class Choose_menu {
 				test.Jtest();
 				break;
 			default:
-				scan.close();
 				break;
 			}
+			if(ck == 4)
+				break;
 			
 		}
 		

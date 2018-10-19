@@ -107,11 +107,8 @@ public class inBusinDao {
 			pst.registerOutParameter(3, java.sql.Types.INTEGER);
 			
 			pst.execute();
-			
-
+		
 			int result = pst.getInt(3);
-
-			System.out.println(result);
 			
 			if(result > 0)
 				System.out.println("성공");
